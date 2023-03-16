@@ -6,8 +6,8 @@ const app = express();
 app.use(bodyParser.json());
 
 app.post("/events", (req, res) => {
-  console.log("event-bus  /events");
   const event = req.body;
+  console.log("event-bus post/events", event);
 
   axios.post("http://localhost:4000/events", event).catch((error) => {
     console.log(error.message);
@@ -15,7 +15,9 @@ app.post("/events", (req, res) => {
   axios.post("http://localhost:4001/events", event).catch((error) => {
     console.log(error.message);
   }); // commnets
-  // axios.post("http://localhost:4002/events", event); //
+  axios.post("http://localhost:4002/events", event).catch((error) => {
+    console.log(error.message);
+  }); //
   res.send({ status: "OK" });
 });
 
