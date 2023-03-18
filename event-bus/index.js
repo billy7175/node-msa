@@ -10,14 +10,18 @@ app.post("/events", (req, res) => {
   console.log("event-bus post/events", event);
 
   axios.post("http://localhost:4000/events", event).catch((error) => {
-    console.log(error.message);
+    console.log('4000',error.message);
   }); // posts
   axios.post("http://localhost:4001/events", event).catch((error) => {
-    console.log(error.message);
+    console.log('4001',error.message);
   }); // commnets
   axios.post("http://localhost:4002/events", event).catch((error) => {
-    console.log(error.message);
-  }); //
+    console.log('4002',error.message);
+  }); // query
+
+  axios.post("http://localhost:4003/events", event).catch((error) => {
+    console.log('4003',error.message);
+  }); // moderation
   res.send({ status: "OK" });
 });
 
